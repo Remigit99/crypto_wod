@@ -1,0 +1,80 @@
+/*==========  NAVBAR ==========*/
+
+nav {
+    height: 4rem;
+    width: 100vw;
+    display: grid;
+    place-items: center;
+    background-color: black;
+  }
+  
+.icons{
+    font-size: 1.5rem;
+    color: white;
+}
+
+  .nav__container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .nav__container-left,
+  .nav__links {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .nav__container-left {
+    gap: 5rem;
+  }
+  
+  .nav__links {
+    gap: 2.5rem;
+  }
+  
+  .nav__logo {
+    background-color: black;
+  }
+  
+  .nav__container-right {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 3rem;
+  }
+
+
+  .search__box{
+    border: 1px solid #808080;
+    border-radius: 2rem;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  .search__box input{
+    color: white;
+    font-family: inherit;
+  }
+
+
+  
+  .profile{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 2rem;
+  }
+
+  .profile__avatar a{
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+  
+  .profile a img {
+    width: 3rem;
+  }
+  

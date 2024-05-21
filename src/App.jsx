@@ -14,11 +14,12 @@ const App = () => {
       errorElement: <NotFound />,
       children: [
         {
-          path: "/",
+          index : true,
           element: <Home />,
         },
         {
-          path: "exchange",
+          // path: "exchange",
+          index : true,
           element: <Exchange />,
         },
       ],

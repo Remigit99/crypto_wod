@@ -1,16 +1,31 @@
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import Layout from "./components/Layout";
+import NotFound from "./Pages/NotFound";
 
-import './App.css'
-import Navbar from './components/Navbar/Navbar'
+import "./App.css";
+import Home from "./Pages/Home";
+import Exchange from "./Pages/Exchange";
 
 const App = () => {
- 
+  const router = createBrowserRouter([
+    {
+      path: "/",
+      element: <Layout />,
+      errorElement: <NotFound />,
+      children: [
+        {
+          path: "/",
+          element: <Home />,
+        },
+        {
+          path: "exchange",
+          element: <Exchange />,
+        },
+      ],
+    },
+  ]);
 
-  return (
-    <>
-    <Navbar/>
-      <h1> Hello World!</h1>
-    </>
-  )
-}
+  return <RouterProvider router={router} />;
+};
 
-export default App
+export default App;

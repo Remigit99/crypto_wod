@@ -6,6 +6,10 @@ import "./App.css";
 import Home from "./Pages/Home";
 import Exchange from "./Pages/Exchange";
 
+// import { Provider } from "react-redux";
+
+// import store from "./app/store.js";
+
 const App = () => {
   const router = createBrowserRouter([
     {
@@ -14,19 +18,23 @@ const App = () => {
       errorElement: <NotFound />,
       children: [
         {
-          index : true,
+          index: true,
           element: <Home />,
         },
         {
           // path: "exchange",
-          index : true,
+          index: true,
           element: <Exchange />,
         },
       ],
     },
   ]);
 
-  return <RouterProvider router={router} />;
+  return (
+    // <Provider store={store}>
+      <RouterProvider router={router} />
+    // </Provider>
+  );
 };
 
 export default App;

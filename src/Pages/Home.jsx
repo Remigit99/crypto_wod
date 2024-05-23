@@ -3,6 +3,7 @@
 
 import { useState, useEffect } from "react";
 // import axios from "axios";
+import millify from "millify";
 
 const Home = () => {
   // const {data, isFetching} = useGetCryptosQuery()
@@ -15,6 +16,7 @@ const Home = () => {
   const [cryptoData, setCryptoData] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
 
+  //   let limitedCryptoData = cryptoData
   // if(loading){
   //     return <h1>Loading...</h1>
   // }
@@ -32,8 +34,8 @@ const Home = () => {
   //         //     orderDirection: 'desc'
   //         //   },
   //         headers: {
-  //           "X-RapidAPI-Key":
-  //             "e9cfee1ad0msh6179072bac13d8fp12c52cjsn1e97ea2f28f1",
+  // "X-RapidAPI-Key": import.meta.VITE_API_KEY_COINRANKING
+  //   ,
   //           "X-RapidAPI-Host": "coinranking1.p.rapidapi.com",
   //         },
   //       };
@@ -55,17 +57,17 @@ const Home = () => {
 
   useEffect(() => {
     const fetchData = async () => {
-      //   try {
-      //     const response = await fetch(
-      //       "https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&per_page=50"
-      //     );
-      //     const data = await response.json();
-      //     setCryptoData(data); // Update state after successful fetch
-      //   } catch (error) {
-      //     console.error(error);
-      //   } finally {
-      //     setIsLoading(false);
-      //   }
+      try {
+        const response = await fetch(
+          "https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&per_page=50"
+        );
+        const data = await response.json();
+        setCryptoData(data); // Update state after successful fetch
+      } catch (error) {
+        console.error(error);
+      } finally {
+        setIsLoading(false);
+      }
 
       const options = {
         method: "GET",
@@ -125,7 +127,9 @@ const Home = () => {
                         </article>
                     </div> */}
 
-          <div>
+          {/* 
+
+        <div>
             {isLoading ? (
               <p>Loading crypto data...</p>
             ) : (
@@ -134,16 +138,16 @@ const Home = () => {
                   <article key={crypto.id}>
                     <div className="crypto__header">
                       <div className="crypto__img">
-                        <img src={crypto.img} alt={crypto.name} />
+                        <img src={crypto.image} alt={crypto.name} />
                       </div>
-                      <h5>{crypto.symbol}</h5>
+                      <h4>{crypto.symbol.toUpperCase()}</h4>
                     </div>
                     <div className="crypto__main">
-                      <h6>Current Price: {crypto.current_price}</h6>
-                      <p>Market Cap.: {crypto.market_cap}</p>
+                      <h6>Current Price: {millify(crypto.current_price) }</h6>
+                      <p>Market Cap.: {millify( crypto.market_cap)}</p>
 
-                      <p>Total Volume: {crypto.total_volume}</p>
-                      <p>Total Supply: {crypto.total_supply}</p>
+                      <p>Total Volume: {millify(crypto.total_volume)}</p>
+                      <p>Total Supply: {millify(crypto.total_supply)}</p>
                       <p>Rank: {crypto.market_cap_rank}</p>
                     </div>
                   </article>
@@ -152,23 +156,56 @@ const Home = () => {
             )}
           </div>
 
-          {/* <div>
-            {isLoading ? (
-              <p>Loading crypto data...</p>
-            ) : (
-              cryptoData.map(
-                ({ uuid, symbol, name, iconUrl, marketCap, price }) => (
-                  <article key={uuid}>
-                    <h4>{symbol}</h4>
-                    <h3>{name}</h3>
-                    <img src={iconUrl} alt={name} />
-                    <h4>{marketCap}</h4>
-                    <h4>{price}</h4>
-                  </article>
-                )
-              )
-            )}
-          </div> */}
+           */}
+
+          {/* Table */}
+
+          <table>
+            <thead>
+              <tr>
+                <th>Rank</th>
+                <th>Coin</th>
+                <th>Price</th>
+                <th>1h</th>
+                <th>24h</th>
+                <th>7D</th>
+                <th>24h Volume</th>
+                <th>Market Cap</th>
+                <th>chart Last 7D</th>
+              </tr>
+            </thead>
+
+            <tbody>
+          
+              {isLoading ? (
+                <p>Loading crypto data...</p>
+              ) : (
+                <div className="cryptos">
+                  {cryptoData.map((crypto) => (
+                    <tr key={crypto.id}>
+                      <td>{crypto.market_cap_rank}</td>
+                      <td className="crypto__more">
+                        <div className="crypto__img">
+                          <img src={crypto.image} alt={crypto.name} />
+                        </div>
+                        <h4>{crypto.symbol.toUpperCase()}</h4>
+                        <p>{crypto.name}</p>
+                      </td>
+                      <td>{millify(crypto.current_price)}</td>
+                      <td>0.1%</td>
+                      <td>0.4%</td>
+                      <td>1.2%</td>
+                      <td>{millify(crypto.total_volume)}</td>
+                      <td>{millify(crypto.market_cap)}</td>
+                      <td>$1,378,020</td>
+                    </tr>
+                  ))}
+                </div>
+              )}
+
+
+            </tbody>
+          </table>
         </div>
       </header>
     </>

@@ -83,6 +83,7 @@ const Home = () => {
         //   options
         const response = await fetchData.json();
         console.log(response);
+        console.log(typeof response.price_change_percentage_24h_in_currency);
         setCryptoData(response);
       } catch (error) {
         console.error(error);
@@ -183,7 +184,7 @@ const Home = () => {
                 cryptoData.map((crypto) => (
                   <tr key={crypto.id}>
                     <td>S</td>
-                    <td>{millify(crypto.market_cap_rank)}</td>
+                    <td>{millify(Number(crypto.market_cap_rank))}</td>
                     <td className="crypto__more">
                       <img
                         className="crypto__img"
@@ -193,12 +194,12 @@ const Home = () => {
                       <h5>{crypto.name}</h5>
                       <p>{crypto.symbol}</p>
                     </td>
-                    <td>{millify(crypto.current_price)}</td>
-                    <td>{millify(crypto.price_change_percentage_1h_in_currency)}%</td>
-                    <td>{millify(crypto.price_change_percentage_24h_in_currency)}%</td>
-                    <td>{millify(crypto.price_change_percentage_7d_in_currency)}%</td>
-                    <td>{millify(crypto.total_volume)}</td>
-                    <td>{millify(crypto.market_cap)}</td>
+                    <td>{millify(Number(crypto.current_price))}</td>
+                    <td>{millify(Number(crypto.price_change_percentage_1h_in_currency))}%</td>
+                    <td>{millify(Number(crypto.price_change_percentage_24h_in_currency))}%</td>
+                    <td>{millify(Number(crypto.price_change_percentage_7d_in_currency))}%</td>
+                    <td>{millify(Number(crypto.total_volume))}</td>
+                    <td>{millify(Number(crypto.market_cap))}</td>
                     <td>Ma</td>
                   </tr>
                 ))

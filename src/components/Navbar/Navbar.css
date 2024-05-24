@@ -27,11 +27,11 @@ nav {
   }
   
   .nav__container-left {
-    gap: 5rem;
+    gap: 3.5rem;
   }
   
   .nav__links {
-    gap: 2.5rem;
+    gap: 2rem;
   }
   
   .nav__logo {
@@ -42,7 +42,7 @@ nav {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    gap: 3rem;
+    gap: 2rem;
   }
 
 
@@ -59,8 +59,6 @@ nav {
     font-family: inherit;
   }
 
-
-  
   .profile{
   display: flex;
   align-items: center;

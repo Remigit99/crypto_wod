@@ -5,6 +5,10 @@ import NotFound from "./Pages/NotFound";
 import "./App.css";
 import Home from "./Pages/Home";
 import Exchange from "./Pages/Exchange";
+import Dashboard from "./Pages/Dashboard";
+import Markets from "./Pages/Markets";
+import News from "./Pages/News";
+import Wallet from "./Pages/Wallet";
 
 // import { Provider } from "react-redux";
 
@@ -22,9 +26,28 @@ const App = () => {
           element: <Home />,
         },
         {
-          // path: "exchange",
-          index: true,
+          path: "exchange",
           element: <Exchange />,
+        },
+
+        {
+          path: "dashboard",
+          element: <Dashboard />,
+        },
+
+        {
+          path: "markets",
+          element: <Markets />,
+        },
+
+        {
+          path: "news",
+          element: <News />,
+        },
+
+        {
+          path: "wallet",
+          element: <Wallet />,
         },
       ],
     },
@@ -32,7 +55,7 @@ const App = () => {
 
   return (
     // <Provider store={store}>
-      <RouterProvider router={router} />
+    <RouterProvider router={router} />
     // </Provider>
   );
 };

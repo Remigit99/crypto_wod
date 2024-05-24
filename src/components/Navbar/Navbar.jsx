@@ -3,6 +3,7 @@ import { RiUser6Line } from "react-icons/ri";
 import { CiSearch } from "react-icons/ci";
 import "./Navbar.css";
 
+import { Link } from "react-router-dom";
 import NavLogo from "../../assets/nav_logo.svg";
 // import UserLogo from "../../assets/user_nav.svg"
 
@@ -11,23 +12,18 @@ const Navbar = () => {
     <nav>
       <div className="container nav__container">
         <div className="nav__container-left">
-          <div className="nav__logo">
+          <Link to="/" className="nav__logo">
             <img src={NavLogo} alt="company__nav-logo" />
-          </div>
+          </Link>
 
           <ul className="nav__links">
-            <li>
-              <a href="#">Dashboard</a>
-            </li>
-            <li>
-              <a href="#">Markets</a>
-            </li>
-            <li>
-              <a href="#">Exchange</a>
-            </li>
-            <li>
-              <a href="#">Wallets</a>
-            </li>
+
+            <Link to="/dashboard">Dashboard</Link>
+            <Link to="/markets">Markets</Link>
+            <Link to="/exchange">Exchange</Link>
+            <Link to="/wallet">Wallets</Link>
+            <Link to="/news">News</Link>
+ 
           </ul>
         </div>
 

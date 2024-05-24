@@ -76,7 +76,7 @@ const Home = () => {
 
       try {
         const fetchData = await fetch(
-          "https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd",
+          "https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&per_page=10&sparkline=true&price_change_percentage=1h%2C24h%2C7d",
           options
         );
         //   "https://api.coingecko.com/api/v3/coins/list",
@@ -163,6 +163,7 @@ const Home = () => {
           <table>
             <thead>
               <tr>
+                <td></td>
                 <th>Rank</th>
                 <th>Coin</th>
                 <th>Price</th>
@@ -176,34 +177,32 @@ const Home = () => {
             </thead>
 
             <tbody>
-          
               {isLoading ? (
-                <p>Loading crypto data...</p>
+                <h1> Please wait while get your data</h1>
               ) : (
-                <div className="cryptos">
-                  {cryptoData.map((crypto) => (
-                    <tr key={crypto.id}>
-                      <td>{crypto.market_cap_rank}</td>
-                      <td className="crypto__more">
-                        <div className="crypto__img">
-                          <img src={crypto.image} alt={crypto.name} />
-                        </div>
-                        <h4>{crypto.symbol.toUpperCase()}</h4>
-                        <p>{crypto.name}</p>
-                      </td>
-                      <td>{millify(crypto.current_price)}</td>
-                      <td>0.1%</td>
-                      <td>0.4%</td>
-                      <td>1.2%</td>
-                      <td>{millify(crypto.total_volume)}</td>
-                      <td>{millify(crypto.market_cap)}</td>
-                      <td>$1,378,020</td>
-                    </tr>
-                  ))}
-                </div>
+                cryptoData.map((crypto) => (
+                  <tr key={crypto.id}>
+                    <td>S</td>
+                    <td>{millify(crypto.market_cap_rank)}</td>
+                    <td className="crypto__more">
+                      <img
+                        className="crypto__img"
+                        src={crypto.image}
+                        alt={crypto.name}
+                      />
+                      <h5>{crypto.name}</h5>
+                      <p>{crypto.symbol}</p>
+                    </td>
+                    <td>{millify(crypto.current_price)}</td>
+                    <td>{millify(crypto.price_change_percentage_1h_in_currency)}%</td>
+                    <td>{millify(crypto.price_change_percentage_24h_in_currency)}%</td>
+                    <td>{millify(crypto.price_change_percentage_7d_in_currency)}%</td>
+                    <td>{millify(crypto.total_volume)}</td>
+                    <td>{millify(crypto.market_cap)}</td>
+                    <td>Ma</td>
+                  </tr>
+                ))
               )}
-
-
             </tbody>
           </table>
         </div>

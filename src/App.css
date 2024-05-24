@@ -44,8 +44,8 @@
   gap: 1;
 }
 
-.crypto__img img{
-  width: 1.2rem;
+.crypto__img {
+  width: 1.5rem;
 }
 
 
@@ -66,8 +66,12 @@ table thead tr{
   margin: 3rem  0;
 }
 
-table tr{
-  padding: 0.5rem;
+table thead tr th{
+  padding: 1rem 0;
+}
+
+table tbody tr td{
+  padding: 0.6rem 0;
 }
 
 .crypto__more{

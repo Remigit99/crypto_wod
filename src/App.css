@@ -129,5 +129,11 @@ main h1 {
   color: rgb(167, 241, 229);
 }
 
-/*========== HOME PAGE ==============*/
+/*========== EXCHANGE PAGE ==============*/
+.crypto__more{
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 0.6rem;
+}
 /*========== HOME PAGE ==============*/
